@@ -50,20 +50,27 @@ public class Employee {
 	public void setMonthlySalary(int grade) {	
 		switch (grade) {
 			case 1:
-				monthlySalary = 3000000;
+				monthlySalary = 2000000;
 				break;
 			case 2:
-				monthlySalary = 5000000;
+				monthlySalary = 3000000;
 				break;
 			case 3:
-				monthlySalary = 7000000;
+				monthlySalary = 5000000;
 				break;
+			case 4:
+				monthlySalary = 7000000;
+			break;
+			case 5:
+				monthlySalary = 9000000;
+			break;
+			
 			default:
 				throw new IllegalArgumentException("Grade situation invalid: " + grade);
 		}
 		
 		if (isForeigner) {
-			monthlySalary *= 1.5;
+			monthlySalary *= 2.0;
 		}
 	}
 	
