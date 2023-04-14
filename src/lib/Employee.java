@@ -25,13 +25,12 @@ public class Employee {
 	private int otherMonthlyIncome;
 	private int annualDeductible;
 	
-	
 	private String spouseIdNumber;
 
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
-	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
+	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner) {
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -41,13 +40,15 @@ public class Employee {
 		this.monthJoined = monthJoined;
 		this.dayJoined = dayJoined;
 		this.isForeigner = isForeigner;
-		this.gender = gender;
 		
 		childNames = new LinkedList<String>();
 		childIdNumbers = new LinkedList<String>();
 	}
 	
-	
+	/**
+	 * Fungsi untuk menentukan gaji bulanan pegawai berdasarkan grade kepegawaiannya (grade 1: 3.000.000 per bulan, grade 2: 5.000.000 per bulan, grade 3: 7.000.000 per bulan)
+	 * Jika pegawai adalah warga negara asing gaji bulanan diperbesar sebanyak 50%
+	 */
 	
 	public void setMonthlySalary(int grade) {	
 		if (grade == 1) {
@@ -77,7 +78,6 @@ public class Employee {
 	}
 	
 	public void setSpouse(String spouseName, String spouseIdNumber) {
-		
 		this.spouseIdNumber = idNumber;
 	}
 	
@@ -88,6 +88,7 @@ public class Employee {
 	
 	public int getAnnualIncomeTax() {
 		
+		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
 		
 		if (date.getYear() == yearJoined) {
